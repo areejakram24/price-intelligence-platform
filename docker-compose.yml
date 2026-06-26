@@ -49,7 +49,6 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
       KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
       KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
-      # Keep it simple with a pre-configured cluster ID
       CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
     healthcheck:
       test: ["CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list || exit 1"]
@@ -76,14 +75,14 @@ services:
       kafka:
         condition: service_healthy
     volumes:
-      - ./services/backend:/app/services/backend
+      - .:/app
 
   consumer:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: price-intelligence-consumer
-    command: python -m services.consumer.main
+    command: python services/consumer/main.py
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/price_db
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
@@ -93,8 +92,7 @@ services:
       kafka:
         condition: service_healthy
     volumes:
-      - ./services/consumer:/app/services/consumer
-      - ./services/backend:/app/services/backend
+      - .:/app
 
   scraper-worker:
     build:
@@ -111,8 +109,7 @@ services:
       kafka:
         condition: service_healthy
     volumes:
-      - ./services/scraper:/app/services/scraper
-      - ./services/shared:/app/services/shared
+      - .:/app
 
   airflow:
     image: apache/airflow:2.8.1
