@@ -1,0 +1,5 @@
+celery==5.3.6
+redis==5.0.1
+aiohttp==3.9.3
+aiokafka==0.10.0
+protobuf>=5.0.0
