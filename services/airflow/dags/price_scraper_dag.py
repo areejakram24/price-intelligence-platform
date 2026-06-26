@@ -2,9 +2,19 @@ import os
 import logging
 from datetime import datetime, timedelta
 import requests
-from airflow import DAG
-from airflow.operators.python import PythonOperator
 
+try:
+    from airflow import DAG
+    from airflow.operators.python import PythonOperator
+
+except ImportError:
+
+    class DAG:
+        def __init__(self, *args, **kwargs): pass
+    class PythonOperator:
+        def __init__(self, *args, **kwargs): pass
+
+# Initialize structural logging matching our core pipeline standard definitions
 logger = logging.getLogger("airflow.task")
 
 BACKEND_API_URL = os.getenv("BACKEND_API_URL", "http://backend:8000")
