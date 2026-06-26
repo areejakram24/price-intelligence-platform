@@ -31,7 +31,5 @@ venv/
 __pycache__/
 *.pyc
 
-# Temporarily ignore modules we haven't reviewed yet
-monitoring/
-services/ml_training/
+
 
