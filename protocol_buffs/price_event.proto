@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package price;
+
+message PriceEvent {
+  string product_id = 1;
+  string name = 2;
+  double price = 3;
+  string currency = 4;
+  string timestamp = 5;
+  string url = 6;
+  string source = 7;
+}

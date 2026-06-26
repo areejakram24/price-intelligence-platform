@@ -1,0 +1,41 @@
+# Frontend local allocations (tracked by frontend/.gitignore implicitly too)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python backend environments & caches
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Data & Streaming local volumes (Crucial for Kafka/Postgres Docker containers)
+.docker-volumes/
+postgres_data/
+kafka_data/
+
+# Environment configurations and secret logs
+.env
+.env.local
+*.log
+
+# System files
+.DS_Store
+
+
+# Ignore python virtual environments
+venv/
+__pycache__/
+*.pyc
+
+# Temporarily ignore modules we haven't reviewed yet
+monitoring/
+services/airflow/
+services/ml_training/
+
+# We want to ignore other unreviewed microservices for now
+services/scraper/
+services/consumer/
