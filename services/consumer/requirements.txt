@@ -1,0 +1,6 @@
+aiokafka==0.10.0
+sqlalchemy==2.0.27
+psycopg2-binary==2.9.9
+protobuf>=5.0.0
+numpy==1.26.4
+onnxruntime==1.17.1

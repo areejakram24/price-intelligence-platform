@@ -33,9 +33,5 @@ __pycache__/
 
 # Temporarily ignore modules we haven't reviewed yet
 monitoring/
-services/airflow/
 services/ml_training/
 
-# We want to ignore other unreviewed microservices for now
-services/scraper/
-services/consumer/
